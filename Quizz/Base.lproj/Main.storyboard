@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lXM-MC-0kh">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lXM-MC-0kh">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,12 +14,8 @@
         <scene sceneID="ayX-OO-J7r">
             <objects>
                 <viewController id="lXM-MC-0kh" customClass="ViewController" customModule="Quizz" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="q3l-mg-bLz"/>
-                        <viewControllerLayoutGuide type="bottom" id="xEf-sR-1Qu"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lsh-yA-HgX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ci1-oG-Hgp">
@@ -42,7 +38,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUy-1q-Grg">
-                                <rect key="frame" x="0.0" y="620" width="375" height="47"/>
+                                <rect key="frame" x="0.0" y="731" width="375" height="47"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUJ-Aa-4WV">
                                         <rect key="frame" x="0.0" y="22" width="24" height="25"/>
@@ -86,7 +82,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8EA-uk-17u" userLabel="Lower Contianer">
-                                <rect key="frame" x="0.0" y="451" width="375" height="169"/>
+                                <rect key="frame" x="0.0" y="451" width="375" height="280"/>
                                 <subviews>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PjC-Pl-sEQ" userLabel="False Button">
                                         <rect key="frame" x="222" y="60" width="128" height="56"/>
@@ -144,19 +140,19 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Ci1-oG-Hgp" firstAttribute="top" secondItem="lsh-yA-HgX" secondAttribute="top" id="1Vf-Ib-z1Z"/>
-                            <constraint firstAttribute="trailing" secondItem="Ci1-oG-Hgp" secondAttribute="trailing" id="6X7-mm-4As"/>
+                            <constraint firstItem="csm-Gp-wGG" firstAttribute="trailing" secondItem="Ci1-oG-Hgp" secondAttribute="trailing" id="6X7-mm-4As"/>
                             <constraint firstItem="nUy-1q-Grg" firstAttribute="top" secondItem="8EA-uk-17u" secondAttribute="bottom" id="6wj-rb-Ws3"/>
                             <constraint firstItem="nUy-1q-Grg" firstAttribute="top" secondItem="8EA-uk-17u" secondAttribute="bottom" id="DFg-vQ-sO5"/>
-                            <constraint firstAttribute="trailing" secondItem="8EA-uk-17u" secondAttribute="trailing" id="PUE-Tb-3Nd"/>
-                            <constraint firstItem="nUy-1q-Grg" firstAttribute="leading" secondItem="lsh-yA-HgX" secondAttribute="leading" id="T4U-ry-voU"/>
-                            <constraint firstItem="xEf-sR-1Qu" firstAttribute="top" secondItem="nUy-1q-Grg" secondAttribute="bottom" id="Tv6-I3-YZA"/>
-                            <constraint firstItem="Ci1-oG-Hgp" firstAttribute="leading" secondItem="lsh-yA-HgX" secondAttribute="leading" id="Wrm-Q9-7mT"/>
+                            <constraint firstItem="csm-Gp-wGG" firstAttribute="trailing" secondItem="8EA-uk-17u" secondAttribute="trailing" id="PUE-Tb-3Nd"/>
+                            <constraint firstItem="nUy-1q-Grg" firstAttribute="leading" secondItem="csm-Gp-wGG" secondAttribute="leading" id="T4U-ry-voU"/>
+                            <constraint firstItem="csm-Gp-wGG" firstAttribute="bottom" secondItem="nUy-1q-Grg" secondAttribute="bottom" id="Tv6-I3-YZA"/>
+                            <constraint firstItem="Ci1-oG-Hgp" firstAttribute="leading" secondItem="csm-Gp-wGG" secondAttribute="leading" id="Wrm-Q9-7mT"/>
                             <constraint firstItem="8EA-uk-17u" firstAttribute="top" secondItem="Ci1-oG-Hgp" secondAttribute="bottom" constant="-4" id="cPJ-9L-c5G"/>
                             <constraint firstItem="8EA-uk-17u" firstAttribute="top" secondItem="Ci1-oG-Hgp" secondAttribute="bottom" constant="-4" id="eFl-ao-44b"/>
-                            <constraint firstAttribute="trailing" secondItem="nUy-1q-Grg" secondAttribute="trailing" id="gPY-32-no9"/>
-                            <constraint firstItem="8EA-uk-17u" firstAttribute="leading" secondItem="lsh-yA-HgX" secondAttribute="leading" id="oQR-k1-dVu"/>
+                            <constraint firstItem="csm-Gp-wGG" firstAttribute="trailing" secondItem="nUy-1q-Grg" secondAttribute="trailing" id="gPY-32-no9"/>
+                            <constraint firstItem="8EA-uk-17u" firstAttribute="leading" secondItem="csm-Gp-wGG" secondAttribute="leading" id="oQR-k1-dVu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="mEg-ot-bVd"/>
+                        <viewLayoutGuide key="safeArea" id="csm-Gp-wGG"/>
                     </view>
                     <connections>
                         <outlet property="progressBar" destination="AUJ-Aa-4WV" id="DzQ-hl-gFR"/>

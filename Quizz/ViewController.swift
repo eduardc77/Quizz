@@ -11,6 +11,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet var progressBar: UIView!
