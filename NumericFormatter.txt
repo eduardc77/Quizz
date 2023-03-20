@@ -1,0 +1,104 @@
+import UIKit
+
+protocol InputMaskProtocol {
+    func formatInput(in textField: UITextField, range: NSRange, replacementString string: String, masked: Bool) -> Bool
+}
+enum NumberType: String {
+    case phoneNumber = "(###) ###-####"
+    case socialSecurityNumber = "###-##-####"
+}
+final class NumericFormatter {
+    // MARK: - Properties
+    private var numberType: NumberType
+    private let digit: Character = "#"
+    private let alphabetic: Character = "*"
+    private var enteredValue = ""
+    
+    private var pattern: String {
+        return numberType.rawValue
+    }
+    
+    private var maskedPositions: [Int] {
+        switch numberType {
+        case .socialSecurityNumber:
+            return [0, 1, 2, 4, 5]
+        default:
+            return []
+        }
+    }
+    
+    // MARK: - Initialization
+    init(numberType: NumberType) {
+        self.numberType = numberType
+    }
+    
+    // MARK: - Public Methods
+    func formattedString(from plainString: String, masked: Bool = false) -> String {
+        guard !pattern.isEmpty else { return plainString }
+        
+        let pattern: [Character] = Array(self.pattern)
+        var allowedCharacters = CharacterSet.alphanumerics
+        let filteredInput = String(plainString.unicodeScalars.filter(allowedCharacters.contains))
+        let input: [Character] = Array(filteredInput)
+        var formatted: [Character] = []
+        var patternIndex = 0
+        var inputIndex = 0
+        
+        while inputIndex < input.count {
+            guard patternIndex < pattern.count else { break }
+            let inputCharacter = input[inputIndex]
+            switch pattern[patternIndex] {
+            case digit:
+                allowedCharacters = .decimalDigits
+            case alphabetic:
+                allowedCharacters = .letters
+            default:
+                formatted.append(pattern[patternIndex])
+                patternIndex += 1
+                continue
+            }
+            
+            guard inputCharacter.unicodeScalars.allSatisfy(allowedCharacters.contains) else {
+                inputIndex += 1
+                continue
+            }
+            formatted.append(inputCharacter)
+            patternIndex += 1
+            inputIndex += 1
+        }
+        var formattedString = String(formatted)
+        enteredValue = formattedString
+        if masked { formattedString = mask(formattedString, at: maskedPositions) }
+        
+        return formattedString
+    }
+    
+    func mask(_ string: String, at positions: [Int]) -> String {
+        var stringToMask = NSString(string: string)
+        positions.forEach { position in
+            if stringToMask.length > position {
+                stringToMask = stringToMask.replacingCharacters(in: NSRange(location: position, length: 1), with: "#") as NSString
+            }
+        }
+        return stringToMask as String
+    }
+}
+
+// MARK: - InputMaskProtocol Methods
+extension NumericFormatter: InputMaskProtocol {
+    func formatInput(in textField: UITextField, range: NSRange, replacementString string: String, masked: Bool = false) -> Bool {
+        switch numberType {
+        case .socialSecurityNumber, .phoneNumber:
+            guard string.unicodeScalars.allSatisfy(CharacterSet.decimalDigits.contains) else { return false }
+        }
+        
+        guard let textField = textField as? WWTextField else { return false }
+        
+        let stringToFormat = (textField.actualText as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
+        let maskedText = formattedString(from: stringToFormat, masked: masked)
+        textField.actualText = enteredValue
+        textField.text = maskedText
+        
+        return maskedText.isEmpty
+    }
+}
